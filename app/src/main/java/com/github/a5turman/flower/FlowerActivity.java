@@ -3,12 +3,11 @@ package com.github.a5turman.flower;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MotionEvent;
 import android.view.View;
 
 public class FlowerActivity extends AppCompatActivity {
 
-    FlowerView flowerView;
+    private FlowerView flowerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +17,6 @@ public class FlowerActivity extends AppCompatActivity {
 
         flowerView = (FlowerView) findViewById(R.id.flower);
         flowerView.setLeafCoords(App.getPot(this).getCoords());
-        flowerView.setOnTouchListener(touchListener);
 
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,13 +37,5 @@ public class FlowerActivity extends AppCompatActivity {
             flowerView.setLeafCoords(App.getPot(this).getCoords());
         }
     }
-
-    private final View.OnTouchListener touchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            // TODO rotate flower!
-            return true;
-        }
-    };
 
 }

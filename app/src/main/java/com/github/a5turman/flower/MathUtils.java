@@ -23,4 +23,28 @@ public class MathUtils {
         );
     }
 
+    /**
+     * Helper method for translating (x,y) scroll vectors into scalar rotation of the flower.
+     *
+     * @param dx The x component of the current scroll vector.
+     * @param dy The y component of the current scroll vector.
+     * @param x  The x position of the current touch, relative to the flower center.
+     * @param y  The y position of the current touch, relative to the flower center.
+     * @return The scalar representing the change in angular position for this scroll.
+     */
+    static float vectorToScalarScroll(float dx, float dy, float x, float y) {
+        // get the length of the vector
+        float l = (float) Math.sqrt(dx * dx + dy * dy);
+
+        // decide if the scalar should be negative or positive by finding
+        // the dot product of the vector perpendicular to (x,y).
+        float crossX = -y;
+        float crossY = x;
+
+        float dot = (crossX * dx + crossY * dy);
+        float sign = Math.signum(dot);
+
+        return l * sign;
+    }
+
 }
