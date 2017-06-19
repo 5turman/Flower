@@ -56,10 +56,10 @@ public class LeafView extends View {
             rebuildPath(canvas.getWidth(), canvas.getHeight());
         }
 
+        canvas.drawPath(path, leafPaint);
+
         canvas.drawCircle(point1.x, point1.y, radius, pointPaint);
         canvas.drawCircle(point2.x, point2.y, radius, pointPaint);
-
-        canvas.drawPath(path, leafPaint);
     }
 
     public void setCoords(float[] coords) {
